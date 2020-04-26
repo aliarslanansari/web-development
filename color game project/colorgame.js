@@ -29,7 +29,7 @@ function init(){
                 h1.style.backgroundColor = clickedColor;
             }else{
                 this.style.backgroundColor = "#232323";
-                messageDis.textContent = "Try Again";
+                messageDis.textContent = "Try again";
     
             }
         });

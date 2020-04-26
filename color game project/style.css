@@ -10,7 +10,6 @@ body{
 #message{
     display: inline-block;
     width: 20%;
-    font-size: 4vw;
 }
 
 button{
@@ -19,10 +18,9 @@ button{
     background: none;
     height: 100%;
     font-weight: 700;
-    width: inherit;
     color: steelblue;
     letter-spacing: 1px;
-    font-size: 4vw;
+    font-size: inherit;
     transition: all 0.5s;
     --webkit-transition: all 0.5s;
     --moz-transition: all 0.5s;

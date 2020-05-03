@@ -1,0 +1,20 @@
+<%- include("partials/header.ejs") %> 
+<div class="ui main text container segment">
+    <div class="ui huge header">Edit "<%= blog.title %>"</div>    
+    <form action="/blogs/<%= blog._id %>?_method=PUT" method="POST" class='ui form'>
+        <div class="field">
+            <label for="title">Title</label>
+            <input id='title' type="text" value="<%= blog.title %>" name="blog[title]" placeholder="title">
+        </div>
+        <div class="field">
+            <label for="image">Image</label>
+            <input id='image' type="text" name="blog[image]" value="<%= blog.image %>" placeholder="Image">
+        </div>
+        <div class="field">
+            <label for="body">Blog Content</label>
+            <textarea name="blog[body]" id="body" cols="30" rows="10"><%= blog.body %></textarea>
+        </div>
+        <button class="ui vio let basic button">Submit</button>
+    </form>
+</div>
+<%- include("partials/footer.ejs") %>  

@@ -23,15 +23,22 @@
                 </li> -->
             </ul>
             <ul class="my-2 my-lg-0 navbar-nav">
+                <% if(!currentUser){ %> 
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Log In<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/login">Log In<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Sign Up <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/register">Sign Up <span class="sr-only">(current)</span></a>
+                </li>
+                <% }else{ %> 
+                <li class="nav-item active">
+                     <span class="nav-link">Signed in as: <%= currentUser.username.toUpperCase() %>  </span>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Log Out<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/logout">Logout<span class="sr-only">(current)</span></a>
                 </li>
+               
+                <% } %> 
             </ul>
         </div>
     </nav>

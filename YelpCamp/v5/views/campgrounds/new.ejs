@@ -1,11 +1,13 @@
-<%- include("partials/header") %>
-<h1>Create a new campground</h1>
+<%- include("../partials/header") %>
+
 <div class="container">
+    
 	<div class="row">
 		<div class="col-md-3">
 		</div>
 		<div class="col-md-6">
-		<div style="margin:0 auto;">
+        <div style="margin:0 auto;">
+            <h1>Create a new CampGround</h1>
             <form action="/campgrounds" method="POST">
                 <div class="form-group">
                     <input type="text" class="form-control" name='name' id="name" placeholder="Name">
@@ -25,4 +27,4 @@
 	</div>
 </div>
 <a href="/campgrounds">Go Back</a>
-<%- include("partials/footer") %>
+<%- include("../partials/footer") %>

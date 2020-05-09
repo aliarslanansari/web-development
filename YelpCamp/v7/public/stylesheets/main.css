@@ -1,3 +1,7 @@
 /* body{
     background-color: purple;
 } */
+
+#delete-form{
+    display: inline;
+}

@@ -4,14 +4,14 @@ var User = require("../models/user");
 var passport = require("passport");
 
 router.get('/', (req, res) => {
-    res.render('landing',{currentUser:req.user});
+    res.render('landing');
 });
 
 //Auth Routes
 // 1. register
 
 router.get('/register', (req, res) => {
-    res.render("register",{currentUser:req.user});
+    res.render("register");
 });
 
 router.post('/register', (req, res) => {
@@ -19,7 +19,7 @@ router.post('/register', (req, res) => {
     User.register(newUser, req.body.password, function(err,user){
         if(err){
             console.log(err);
-            return res.render('register',{currentUser:req.user});
+            return res.render('register');
         }
         passport.authenticate('local')(req,res,function(){
              res.redirect('/campgrounds');
@@ -30,7 +30,7 @@ router.post('/register', (req, res) => {
 
 //show login form
 router.get('/login', (req, res) => {
-    res.render("login",{currentUser:req.user});
+    res.render("login");
 });
 
 router.post('/login', passport.authenticate("local",{
@@ -50,5 +50,4 @@ function isLoggedIn(req, res, next){
     }
      res.redirect('/login');
 }
-
 module.exports = router;

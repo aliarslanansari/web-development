@@ -9,7 +9,7 @@ router.get('/',(req, res) => {
         if(err){
             console.log(err);
         }else{
-            res.render("campgrounds/index",{campgrounds:allCampgrounds,currentUser:req.user});
+            res.render("campgrounds/index",{campgrounds:allCampgrounds});
         }
     });
 });
@@ -45,7 +45,27 @@ router.get('/:id', (req, res) => {
             console.log(err);
         }else{
             //console.log(foundCampground);
-            res.render('campgrounds/show',{campground:foundCampground,currentUser:req.user});
+            res.render('campgrounds/show',{campground:foundCampground});
+        }
+    });
+});
+
+router.get('/:id/edit', (req, res) => {
+    Campground.findById(req.params.id, function(err, foundCampground){
+        if(err){
+             res.redirect('/campgrounds');
+        }else{
+            res.render("campgrounds/edit",{campground:foundCampground});
+        }
+    });
+});
+
+router.put('/:id', (req, res) => {
+    Campground.findByIdAndUpdate(req.params.id,req.body.campground, function(err, updatedCampground){
+        if(err){
+             res.redirect('/campgrounds');
+        }else{
+             res.redirect('/campgrounds/'+ req.params.id);
         }
     });
 });
@@ -57,6 +77,4 @@ function isLoggedIn(req, res, next){
     }
      res.redirect('/login');
 }
-
-
 module.exports = router;

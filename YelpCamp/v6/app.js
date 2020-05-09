@@ -8,7 +8,6 @@ var express     = require('express'),
     LocalStrategy = require("passport-local"),
     User = require("./models/user"),
     Comment = require('./models/comment');
-
 var commentRoutes = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
     indexRoutes = require("./routes/index");

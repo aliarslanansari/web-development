@@ -7,7 +7,8 @@ var express     = require('express'),
     passport = require("passport"),
     LocalStrategy = require("passport-local"),
     User = require("./models/user"),
-    Comment = require('./models/comment');
+    Comment = require('./models/comment'),
+    methodOverride = require("method-override");
 
 var commentRoutes = require("./routes/comments"),
     campgroundRoutes = require("./routes/campgrounds"),
@@ -24,6 +25,7 @@ var bodyParser = require("body-parser");
 app.set('view engine', 'ejs');  
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname+"/public"));
+app.use(methodOverride('_method'))
 //seedDB(); // Seed the database
 
 //passport configuration
@@ -38,15 +40,16 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.use(commentRoutes);
-app.use(indexRoutes);
-app.use("/campgrounds", campgroundRoutes);
+
 
 app.use(function(req,res,next){
     res.locals.currentUser = req.user;
     next();
 });
 
+app.use(commentRoutes);
+app.use(indexRoutes);
+app.use("/campgrounds", campgroundRoutes);
 
 // Campground.create({
 //     name: "SALMAN", 
